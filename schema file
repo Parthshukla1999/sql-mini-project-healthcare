@@ -1,0 +1,34 @@
+==============================
+ CREATE TABLES
+==============================
+
+create table patients (
+	patient_id serial primary key,
+ 	first_name varchar(50),
+  last_name varchar(50),
+ 	age int,
+ 	gender varchar(50)
+);
+
+ create table doctors(
+ 	doctor_id serial primary Key,
+ 	doctor_name varchar(50),
+  department varchar(50)
+);
+
+
+ create table appointment(
+ 	apt_id serial primary key,
+ 	patient_details int references patients(patient_id),
+ 	doctor_details int references doctors(doctor_id),
+ 	apt_date date,
+ 	diagnosis varchar(50),
+ 	bill_amount decimal(10,2)	
+ );
+
+ create table payments(
+ 	payment_id serial primary key,
+ 	appt_detials int references appointment(apt_id),
+ 	payment_date date,
+ 	paid_amout decimal(10,2)
+ );
